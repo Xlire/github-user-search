@@ -13,6 +13,7 @@ function App() {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
+    const [darkmode, setDarkmode] = useState(false)
 
     async function handleSearch(){
 
@@ -50,7 +51,8 @@ function App() {
     }
 
   return (
-    <div className='app'>
+    <div className={darkmode? "app dark" : "app"}>
+        <button id='dark-light-button' onClick={() => setDarkmode(!darkmode)}>{darkmode ? "☀️ Light Mode" : "🌙 Dark Mode"}</button>
         <h1>GitHub User Finder</h1>
         <FaGithub className='github-icon' />
         <SearchBar 
@@ -63,7 +65,7 @@ function App() {
 
         {error && <p className='error'>{error}</p>}
         
-        <UserCard 
+        <UserCard
             user={user}
         />
     </div>

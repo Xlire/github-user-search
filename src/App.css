@@ -9,16 +9,20 @@ body {
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
+    color: black;
+}
+
+.dark{
+    background-color: #222;
+    color: white;
 }
 
 h1 {
     text-align: center;
-    color: black;
 }
 
 h2 {
     text-align: center;
-    color: black;
 }
 
 
@@ -40,11 +44,15 @@ h2 {
 }
 
 .user-card {
-    background: white;
+    background: rgb(211, 211, 211);
     border-radius: 10px;
     padding: 25px;
     text-align: center;
     box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.app.dark .user-card {
+    background: #333;
 }
 
 /* .avatar {
@@ -70,3 +78,8 @@ h2 {
 /* .github-icon{
     size: 100px;
 } */
+
+.app.dark #dark-light-button{
+    color: black;
+    background: rgb(209, 209, 209);
+}
