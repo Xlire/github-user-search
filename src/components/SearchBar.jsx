@@ -1,16 +1,16 @@
-function SearchBar({username,setUsername, onSearch}){
+function SearchBar({username,setUsername, onSearch, loading}){
     function handleSubmit(event){
         event.preventDefault()
         onSearch()
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Enter Github username"
+        <form className="search-form" onSubmit={handleSubmit}>
+            <input className="search-input" type="text" placeholder="Enter Github username"
                 value={username}
                 onChange={(e)=>{setUsername(e.target.value)}}
             ></input>
-            <button type="submit">Search</button>
+            <button className="search-button" type="submit" disabled={loading}>Search</button>
         </form>
     )
 }

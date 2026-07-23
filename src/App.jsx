@@ -6,6 +6,7 @@ import './App.css'
 
 import SearchBar from "./components/SearchBar"
 import UserCard from "./components/UserCard"
+import { FaGithub } from "react-icons/fa";
 
 function App() {
     const [username,setUsername] = useState("")
@@ -14,6 +15,12 @@ function App() {
     const [error, setError] = useState("")
 
     async function handleSearch(){
+
+        if(!username.trim()){
+            setError("Please enter a username.");
+            setUser(null)
+            return
+        }
 
         setLoading(true)
         setError("")
@@ -43,16 +50,18 @@ function App() {
     }
 
   return (
-    <div>
-        <h1>GitHub User </h1>
+    <div className='app'>
+        <h1>GitHub User Finder</h1>
+        <FaGithub className='github-icon' />
         <SearchBar 
             username={username}
             setUsername={setUsername}
             onSearch={handleSearch}
+            loading={loading}
         />
-        {loading && <p>Loading...</p>}
+        {loading && <p className='loading'>Loading...</p>}
 
-        {error && <p>{error}</p>}
+        {error && <p className='error'>{error}</p>}
         
         <UserCard 
             user={user}
