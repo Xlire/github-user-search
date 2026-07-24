@@ -38,7 +38,7 @@ function App() {
         const data = await response.json()
 
         setUser(data)
-        console.log(data)
+        // console.log(data)
         }
 
         catch(error){
@@ -53,8 +53,10 @@ function App() {
   return (
     <div className={darkmode? "app dark" : "app"}>
         <button id='dark-light-button' onClick={() => setDarkmode(!darkmode)}>{darkmode ? "☀️ Light Mode" : "🌙 Dark Mode"}</button>
-        <h1>GitHub User Finder</h1>
-        <FaGithub className='github-icon' />
+        <h1 className="header-title">
+            <FaGithub className="github-icon" />
+            GitHub User Finder
+        </h1>
         <SearchBar 
             username={username}
             setUsername={setUsername}

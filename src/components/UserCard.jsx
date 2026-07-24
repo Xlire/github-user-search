@@ -3,34 +3,65 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 function UserCard({user}){
 
-    console.log(user)
+    // console.log(user)
     if(!user){
         return null
     }
-    return(
-        <div className="user-card">
-            < img className="avatar" img src={user.avatar_url}
+    return (
+    <div className="user-card">
+
+        <img
+            className="avatar"
+            src={user.avatar_url}
             alt={user.login}
-            width="150"/>
-            
-            {" "}
-            <h2>{user.name}</h2>
-            <p>Bio: {user.bio}</p>
-            <p>Followers: {user.followers}</p>
-            <p>Following: {user.following}</p>
-            <p>Repositories: {user.public_repos}</p>
+        />
+
+        <h2>{user.name}</h2>
+
+        <p className="bio">
+            {user.bio || "No bio available"}
+        </p>
+
+        <div className="stats">
+
+            <div className="stat">
+                <h3>{user.followers}</h3>
+                <p>Followers</p>
+            </div>
+
+            <div className="stat">
+                <h3>{user.following}</h3>
+                <p>Following</p>
+            </div>
+
+            <div className="stat">
+                <h3>{user.public_repos}</h3>
+                <p>Repositories</p>
+            </div>
+
+        </div>
+
+        <div className="details">
+
             <p>
-            <FaMapMarkerAlt /> {user.location}
+                <FaMapMarkerAlt />
+                {" "}
+                {user.location || "Unknown location"}
             </p>
-            <a className="profile-link"
+
+        </div>
+
+        <a
+            className="profile-link"
             href={user.html_url}
             target="_blank"
             rel="noreferrer"
-            >
+        >
             View GitHub Profile
-            </a>
-        </div>
-    )
+        </a>
+
+    </div>
+)
 }
 
 export default UserCard
