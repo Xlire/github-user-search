@@ -1,13 +1,23 @@
 import { FaGithub } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-function UserCard({user}){
+function UserCard({user, repos}){
 
     // console.log(user)
     if(!user){
         return null
     }
+
+    const joinedDate = new Date(
+    user.created_at
+    ).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    })
+
     return (
+    
     <div className="user-card">
 
         <img
@@ -49,6 +59,10 @@ function UserCard({user}){
                 {user.location || "Unknown location"}
             </p>
 
+            <p>
+            Joined {joinedDate}
+            </p>
+
         </div>
 
         <a
@@ -60,7 +74,19 @@ function UserCard({user}){
             View GitHub Profile
         </a>
 
+        <h3>Top 5 Repositories</h3>
+
+        <div className="repo-list">
+            {repos.map((repo) => (
+                <div key={repo.id} className="repo-card">
+                    <a href={repo.html_url} target="blank" rel="nonreferrer">{repo.name}</a>
+                    <p>⭐ {repo.stargazers_count}</p>
+                </div>
+            ))}
+        </div>
     </div>
+
+    
 )
 }
 

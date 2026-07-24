@@ -7,6 +7,7 @@ import './App.css'
 import SearchBar from "./components/SearchBar"
 import UserCard from "./components/UserCard"
 import { FaGithub } from "react-icons/fa";
+import { SiRetropie } from 'react-icons/si'
 
 function App() {
     const [username,setUsername] = useState("")
@@ -14,6 +15,7 @@ function App() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
     const [darkmode, setDarkmode] = useState(false)
+    const [repos, setRepos] = useState([]);
 
     async function handleSearch(){
 
@@ -28,16 +30,26 @@ function App() {
         try{
 
         const url = `https://api.github.com/users/${username}`
-        
+        const repoUrl = `https://api.github.com/users/${username}/repos`
+
         const response = await fetch(url)
 
         if (!response.ok) {
         throw new Error("User not found");
         }
 
-        const data = await response.json()
+        const repoResponse = await fetch(repoUrl)
 
+        const data = await response.json()
+        const repoData = await repoResponse.json()
+
+        const sortedRepos = repoData.sort(
+        (a, b) => b.stargazers_count - a.stargazers_count
+        );
+        const topRepos = sortedRepos.slice(0,5)
+        
         setUser(data)
+        setRepos(topRepos)
         // console.log(data)
         }
 
@@ -69,6 +81,7 @@ function App() {
         
         <UserCard
             user={user}
+            repos={repos}
         />
     </div>
   );
