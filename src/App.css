@@ -251,3 +251,108 @@ a:visited {
 
     transition: .2s;
 }
+
+.spinner {
+    width: 50px;
+    height: 50px;
+
+    margin: 20px auto;
+
+    border: 5px solid #ddd;
+
+    border-top: 5px solid #238636;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.app.dark .spinner {
+
+    border: 5px solid #555;
+
+    border-top: 5px solid #58a6ff;
+
+}
+
+@media (max-width: 768px) {
+    .search-form{
+        flex-direction: column;
+    }
+    .stats{
+
+        flex-direction: column;
+
+        gap:20px;
+
+    }
+    .user-card{
+
+        padding:20px;
+
+    }
+
+    .avatar{
+
+        width:120px;
+        height:120px;
+
+    }
+
+    .header-title{
+
+        font-size:1.8rem;
+
+    }
+
+    .repo-card{
+
+        padding:12px;
+
+    }
+
+    .search-button{
+
+        width:100%;
+
+    }
+
+    .app{
+
+    max-width:600px;
+
+    margin:40px auto;
+
+    padding:20px;
+
+    }
+}
+
+.footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 0.95rem;
+}
+
+.profile-links{
+    display: flex;
+    gap: 10px;
+}

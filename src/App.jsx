@@ -6,6 +6,8 @@ import './App.css'
 
 import SearchBar from "./components/SearchBar"
 import UserCard from "./components/UserCard"
+import Spinner from "./components/Spinner"
+import Footer from "./components/Footer";
 import { FaGithub } from "react-icons/fa";
 import { SiRetropie } from 'react-icons/si'
 
@@ -75,7 +77,7 @@ function App() {
             onSearch={handleSearch}
             loading={loading}
         />
-        {loading && <p className='loading'>Loading...</p>}
+        {loading && <Spinner />}
 
         {error && <p className='error'>{error}</p>}
         
@@ -83,6 +85,8 @@ function App() {
             user={user}
             repos={repos}
         />
+
+        <Footer />
     </div>
   );
 }
